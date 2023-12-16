@@ -11,6 +11,12 @@ class Note:
 
     def change_note(self, new_text):
         self.note = new_text
+
+    def del_teg(self, teg):
+        if teg in self.teg:
+            self.teg.remove(teg)
+            return 'mission complete'
+        return 'teg is not found'
     
     def __str__(self):
         return f"Note name: {self.name}, tegs: {'; '.join(p for p in self.teg)}, note: {self.note}"
@@ -59,13 +65,17 @@ print(cleans)
 
 print('------------------------------------------')
 
+# видалення тегу
+cleans.del_teg('необовязкове')
+print('------------------------------------------')
+
 # Пошук нотатки по назві
 print(notebook.find_note('лягти спати'))
 
 print('------------------------------------------')
 
 # Пошук по тегам
-print(notebook.find_note_teg('обовязкове'))
+print(notebook.find_note_teg('необовязкове'))
 
 for i in notebook.find_note_teg('щоденне'):
     print(i)
